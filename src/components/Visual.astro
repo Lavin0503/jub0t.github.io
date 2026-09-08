@@ -1,0 +1,11 @@
+---
+// Dark panel used as the illustration area at the top of a card.
+interface Props {
+	class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['relative overflow-hidden border-b border-line bg-neutral-950 text-neutral-200', className]} aria-hidden="true">
+	<slot />
+</div>

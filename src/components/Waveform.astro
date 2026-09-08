@@ -1,0 +1,13 @@
+---
+// Deterministic pseudo-random bar heights so the build is stable.
+interface Props {
+	bars?: number;
+	class?: string;
+}
+const { bars = 40, class: className = '' } = Astro.props;
+const heights = Array.from({ length: bars }, (_, i) => 25 + Math.abs(Math.sin(i * 1.7) * 55 + Math.cos(i * 0.9) * 20));
+---
+
+<div class:list={['flex h-full items-center gap-[3px]', className]}>
+	{heights.map((h) => <span class="w-[3px] shrink-0 rounded-full bg-current" style={`height:${h.toFixed(0)}%`} />)}
+</div>

@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components';
+import Container from './Container.astro';
+import { site } from '../data/site';
+
+const links = [
+	{ href: `${site.repoUrl}/releases`, label: 'Releases' },
+	{ href: `${site.repoUrl}/blob/main/CONTRIBUTING.md`, label: 'Contributing' },
+	{ href: `${site.repoUrl}/blob/main/ROADMAP.MD`, label: 'Roadmap' },
+	{ href: `${site.repoUrl}/issues`, label: 'Issues' },
+];
+---
+
+<footer class="border-t border-line">
+	<Container class="flex flex-col gap-6 py-10 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+		<div class="flex flex-col gap-1">
+			<span class="font-medium text-ink">{site.name}</span>
+			<span>
+				AGPL-3.0 · A project by <a href={site.author.url} class="underline decoration-line underline-offset-4 hover:text-ink">{site.author.name}</a>
+			</span>
+		</div>
+		<div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+			<nav class="flex flex-wrap gap-x-5 gap-y-2">
+				{links.map((l) => <a href={l.href} class="hover:text-ink" rel="noopener">{l.label}</a>)}
+			</nav>
+			<div class="flex gap-2">
+				<a href={site.repoUrl} rel="noopener" aria-label="GitHub" class="flex size-9 items-center justify-center rounded-md border border-line hover:border-ink hover:text-ink">
+					<Icon name="simple-icons:github" class="size-4" />
+				</a>
+				<a href={site.discordUrl} rel="noopener" aria-label="Discord" class="flex size-9 items-center justify-center rounded-md border border-line hover:border-ink hover:text-ink">
+					<Icon name="simple-icons:discord" class="size-4" />
+				</a>
+			</div>
+		</div>
+	</Container>
+</footer>
